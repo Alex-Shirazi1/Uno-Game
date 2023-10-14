@@ -1,0 +1,20 @@
+const mongoose = require('mongoose');
+
+const gameSchema = new mongoose.Schema({
+    lobbyId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Lobby',
+    },
+    players: [{
+        username: String,
+        userId: mongoose.Schema.Types.ObjectId,
+        cards: [String],
+    }],
+    turn: Number,
+    direction: String,
+   
+});
+
+const Game = mongoose.model('Game', gameSchema);
+
+module.exports = Game;
